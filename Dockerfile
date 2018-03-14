@@ -6,7 +6,13 @@ RUN apk update && \
 ADD ./bin /sbin
 RUN chmod a+x /sbin/*
 
-RUN sed -ie 's/^root::/root:!:/' /etc/shadow
+RUN adduser -D foo
+
+RUN a_pass=$(echo fubar | mkpasswd) && \
+    echo "root:${a_pass}" | chpasswd
+
+USER foo
+ENTRYPOINT ["sh"]
 
 VOLUME /etc/openvpn
 
