@@ -10,5 +10,5 @@ VOLUME /etc/openvpn
 
 EXPOSE 1194/udp 8080/tcp
 
-CMD run
+CMD run --cap-add=NET_ADMIN
 
