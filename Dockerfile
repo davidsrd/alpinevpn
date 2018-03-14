@@ -4,11 +4,11 @@ RUN apk update && \
 	apk add openvpn iptables socat curl openssl
 
 ADD ./bin /sbin
-
-USER root
+RUN chmod a+x /sbin/*
 
 VOLUME /etc/openvpn
 
 EXPOSE 1194/udp 8080/tcp
 
-CMD run -privileged
+CMD run
+
