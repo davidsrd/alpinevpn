@@ -5,8 +5,10 @@ RUN apk update && \
 
 ADD ./bin /sbin
 
+USER root
+
 VOLUME /etc/openvpn
 
 EXPOSE 1194/udp 8080/tcp
 
-CMD ["–privileged=true"]
+CMD run
