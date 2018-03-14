@@ -6,7 +6,12 @@ RUN apk update && \
 ADD ./bin /sbin
 RUN chmod a+x /sbin/*
 
-ONBUILD RUN --privileged
+RUN adduser -D foo
+
+RUN a_pass=$(echo fubar | mkpasswd) && \
+    echo "root:${a_pass}" | chpasswd
+
+USER foo
 
 VOLUME /etc/openvpn
 
