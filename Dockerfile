@@ -9,4 +9,6 @@ VOLUME /etc/openvpn
 
 EXPOSE 1194/udp 8080/tcp
 
+ENTRYPOINT --privileged
+
 CMD run
