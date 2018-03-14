@@ -6,11 +6,11 @@ RUN apk update && \
 ADD ./bin /sbin
 RUN chmod a+x /sbin/*
 
-USER root
+USER root:root
 
 VOLUME /etc/openvpn
 
 EXPOSE 1194/udp 8080/tcp
 
-CMD run --cap-add=NET_ADMIN --cap-add=NET_RAW
+CMD run
 
