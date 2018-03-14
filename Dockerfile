@@ -6,7 +6,7 @@ RUN apk update && \
 ADD ./bin /sbin
 RUN chmod a+x /sbin/*
 
-ARG privileged=true
+ONBUILD RUN --privileged
 
 VOLUME /etc/openvpn
 
